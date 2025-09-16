@@ -1,0 +1,61 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Arbitro Ta-Te-Ti</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="container">
+    <h1>Arbitro de Ta-Te-Ti</h1>
+    <section class="panel">
+      <form id="matchForm" class="form">
+        <div class="player-config">
+          <h2>Jugador 1</h2>
+          <label>
+            Nombre
+            <input type="text" name="player1Name" placeholder="Nombre" required />
+          </label>
+          <label>
+            Puerto
+            <input type="number" name="player1Port" placeholder="3001" required />
+          </label>
+        </div>
+        <div class="player-config">
+          <h2>Jugador 2</h2>
+          <label>
+            Nombre
+            <input type="text" name="player2Name" placeholder="Nombre" required />
+          </label>
+          <label>
+            Puerto
+            <input type="number" name="player2Port" placeholder="3002" required />
+          </label>
+        </div>
+        <div class="form-actions">
+          <button type="button" id="swapPlayers">Invertir jugadores</button>
+          <button type="submit">Iniciar partida</button>
+        </div>
+      </form>
+      <div id="status" class="status"></div>
+    </section>
+    <section class="board" id="board" aria-label="Tablero">
+      <div class="cell" data-index="0"></div>
+      <div class="cell" data-index="1"></div>
+      <div class="cell" data-index="2"></div>
+      <div class="cell" data-index="3"></div>
+      <div class="cell" data-index="4"></div>
+      <div class="cell" data-index="5"></div>
+      <div class="cell" data-index="6"></div>
+      <div class="cell" data-index="7"></div>
+      <div class="cell" data-index="8"></div>
+    </section>
+    <section class="history">
+      <h2>Historial de movimientos</h2>
+      <ul id="moves"></ul>
+    </section>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>

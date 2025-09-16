@@ -1,0 +1,21 @@
+﻿{
+  "name": "tateti-arbitro",
+  "version": "1.0.0",
+  "description": "Arbitro para partidas de Ta-Te-Ti entre bots HTTP.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"No hay pruebas definidas\""
+  },
+  "keywords": [
+    "tateti",
+    "tic-tac-toe",
+    "arbitro"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^1.12.2",
+    "express": "^5.1.0"
+  }
+}
