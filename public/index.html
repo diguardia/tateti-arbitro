@@ -7,54 +7,124 @@
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <main class="container">
-    <h1>Arbitro de Ta-Te-Ti</h1>
-    <section class="panel">
+  <main class="layout">
+    <section class="board-area">
+      <header class="board-header">
+        <h1>Arbitro de Ta-Te-Ti</h1>
+        <p>Visualiza partidas entre bots o reta a uno desde tu navegador.</p>
+      </header>
+      <div class="board-wrapper">
+        <div id="board" class="board board--size-3" aria-label="Tablero"></div>
+      </div>
+      <div id="status" class="status" role="status"></div>
+      <section class="history">
+        <h2>Historial de movimientos</h2>
+        <ul id="moves"></ul>
+      </section>
+      <section id="tournamentResults" class="tournament" hidden>
+        <h2>Resultados del torneo</h2>
+        <div id="tournamentTable" class="tournament-table"></div>
+        <div id="tournamentMatches" class="tournament-matches"></div>
+      </section>
+    </section>
+    <aside class="control-panel">
       <form id="matchForm" class="form">
-        <div class="player-config">
-          <h2>Jugador 1</h2>
+        <fieldset class="group">
+          <legend>Modo</legend>
           <label>
-            Nombre
-            <input type="text" name="player1Name" placeholder="Nombre" required />
+            <input type="radio" name="mode" value="single" checked />
+            Partida individual
           </label>
           <label>
-            Puerto
-            <input type="number" name="player1Port" placeholder="3001" required />
+            <input type="radio" name="mode" value="tournament" />
+            Torneo (6 partidos)
           </label>
+        </fieldset>
+
+        <fieldset class="group">
+          <legend>Tamano del tablero</legend>
+          <label>
+            <input type="radio" name="boardSize" value="3" checked />
+            3 x 3
+          </label>
+          <label>
+            <input type="radio" name="boardSize" value="5" />
+            5 x 5
+          </label>
+        </fieldset>
+
+        <label class="group">
+          Tiempo maximo de respuesta (ms)
+          <input type="number" name="timeout" min="500" step="100" value="3000" />
+        </label>
+
+        <div class="player-grid">
+          <section class="player-card" data-player="1">
+            <h2>Jugador 1</h2>
+            <label>
+              Nombre
+              <input type="text" name="player1Name" placeholder="Nombre" required />
+            </label>
+            <label>
+              Tipo
+              <select name="player1Type">
+                <option value="bot">Bot</option>
+                <option value="human">Humano</option>
+              </select>
+            </label>
+            <div class="bot-settings">
+              <label>
+                Host (opcional)
+                <input type="text" name="player1Host" placeholder="localhost" />
+              </label>
+              <label>
+                Puerto
+                <input type="number" name="player1Port" placeholder="3001" />
+              </label>
+              <label>
+                URL completa
+                <input type="text" name="player1Url" placeholder="http://localhost:3001/move" />
+              </label>
+            </div>
+          </section>
+          <section class="player-card" data-player="2">
+            <h2>Jugador 2</h2>
+            <label>
+              Nombre
+              <input type="text" name="player2Name" placeholder="Nombre" required />
+            </label>
+            <label>
+              Tipo
+              <select name="player2Type">
+                <option value="bot">Bot</option>
+                <option value="human">Humano</option>
+              </select>
+            </label>
+            <div class="bot-settings">
+              <label>
+                Host (opcional)
+                <input type="text" name="player2Host" placeholder="localhost" />
+              </label>
+              <label>
+                Puerto
+                <input type="number" name="player2Port" placeholder="3002" />
+              </label>
+              <label>
+                URL completa
+                <input type="text" name="player2Url" placeholder="http://localhost:3002/move" />
+              </label>
+            </div>
+          </section>
         </div>
-        <div class="player-config">
-          <h2>Jugador 2</h2>
-          <label>
-            Nombre
-            <input type="text" name="player2Name" placeholder="Nombre" required />
-          </label>
-          <label>
-            Puerto
-            <input type="number" name="player2Port" placeholder="3002" required />
-          </label>
-        </div>
+
+        <p class="hint" id="tournamentHint">El modo torneo requiere que ambos jugadores sean bots.</p>
+
         <div class="form-actions">
-          <button type="button" id="swapPlayers">Invertir jugadores</button>
-          <button type="submit">Iniciar partida</button>
+          <button type="button" id="swapPlayers">Intercambiar jugadores</button>
+          <button type="submit">Comenzar</button>
         </div>
       </form>
-      <div id="status" class="status"></div>
-    </section>
-    <section class="board" id="board" aria-label="Tablero">
-      <div class="cell" data-index="0"></div>
-      <div class="cell" data-index="1"></div>
-      <div class="cell" data-index="2"></div>
-      <div class="cell" data-index="3"></div>
-      <div class="cell" data-index="4"></div>
-      <div class="cell" data-index="5"></div>
-      <div class="cell" data-index="6"></div>
-      <div class="cell" data-index="7"></div>
-      <div class="cell" data-index="8"></div>
-    </section>
-    <section class="history">
-      <h2>Historial de movimientos</h2>
-      <ul id="moves"></ul>
-    </section>
+    </aside>
   </main>
   <script src="app.js"></script>
 </body>
