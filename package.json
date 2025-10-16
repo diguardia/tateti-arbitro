@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "test": "echo \"No hay pruebas definidas\""
+    "test": ""
   },
   "keywords": [
     "tateti",
