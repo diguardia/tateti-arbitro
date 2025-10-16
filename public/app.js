@@ -14,7 +14,7 @@ const SYMBOLS = {
   2: 'O'
 };
 
-const DEFAULT_WIN_LENGTH = 3;
+
 
 let cells = [];
 let currentBoardSize = 3;
@@ -27,7 +27,7 @@ const interactiveState = {
   resolveHumanMove: null,
   board: [],
   boardSize: currentBoardSize,
-  winLength: DEFAULT_WIN_LENGTH
+  winLength: currentBoardSize === 3 ? 3 : 4
 };
 
 function delay(ms) {
@@ -323,7 +323,7 @@ function getFormConfig() {
   return {
     mode,
     boardSize,
-    winLength: DEFAULT_WIN_LENGTH,
+    winLength: boardSize === 3 ? 3 : 4,
     timeoutMs,
     players
   };
